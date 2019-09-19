@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 
 const Schema = mongoose.Schema;
 
 const bibSchema = new Schema({
-    id: {type: Number, required: true},
     title: {type: String, required: true},
     description: {type: String},
     checkpoint: {type: Number, required: true},
@@ -13,5 +13,6 @@ const bibSchema = new Schema({
     timestamps: true,
 });
 
+bibSchema.plugin(autoIncrement.plugin, 'Bib');
 const Bib = mongoose.model('Bib', bibSchema);
 module.exports = Bib;

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 
 require('dotenv').config();
 
@@ -14,6 +15,7 @@ const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true,  useUnifiedTopology: true});
 
 const connection = mongoose.connection;
+autoIncrement.initialize(connection);
 connection.once('open', () => {
     console.log('mongodb database connection established successfully');
 });

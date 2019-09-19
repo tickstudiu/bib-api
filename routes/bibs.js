@@ -14,14 +14,12 @@ router.route('/:id').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const id = Number(req.body.id);
     const title = req.body.title;
     const description = req.body.description;
     const checkpoint = Number(req.body.checkpoint);
     const distance = Number(req.body.distance);
 
     const newBib = new Bib({
-        id,
         title,
         description,
         checkpoint,
